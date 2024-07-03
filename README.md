@@ -1,20 +1,44 @@
-# 📊 Data evaluation template
+# 📊 [Examination Checker](https://examinationchecker.streamlit.app/)
 
-A simple Streamlit app showing how to evaluate and annotate data, using dataframes
-and charts. 
+## Introduction
+Examination Checker is a Streamlit-powered web application designed to evaluate student answers against predefined answer keys. It leverages natural language processing tools to assess text similarity, extract keywords, and check grammar, making the grading process efficient and accurate.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://data-evaluation-template.streamlit.app/)
+## Features
+- **Text Similarity**: Compare student answers with answer keys using TF-IDF and cosine similarity.
+- **Keyword Extraction**: Identify important keywords in student answers.
+- **Grammar Checking**: Evaluate grammar accuracy using TextBlob.
+- **File Handling**: Upload and process Excel files containing questions and answers.
+- **Download Sample File**: Provide a sample Excel file for users to download and use.
 
-### How to run it on your own machine
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-1. Install the requirements
+## Prerequisites
+- Python 3.8+
+- pip
+- Streamlit
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourgithubusername/examination-checker.git
+2. Navigate to the project directory:
+   ```bash
+   cd examination-checker
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
 
-2. Run the app
+## Usage
+- To run the application locally:
+  ```bash
+  streamlit run streamlit_app.py
+Open your web browser and navigate to http://localhost:8501 to start evaluating exam answers.
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## Contributing
+Contributions are what make the open-source community such a powerful platform for learning, inspiring, and creating. Any contributions you make are greatly appreciated.
+
+## Contact
+- Gmail: kushalpatel0265@gmail.com
+- Project Link: https://github.com/kushalpatel0265/Examination-Checker
+- Deployment Link: https://examinationchecker.streamlit.app/
