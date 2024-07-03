@@ -9,9 +9,9 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from collections import Counter
 from textblob import TextBlob
 
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
 
 sample_data = {
     "question": [
