@@ -68,15 +68,15 @@ def calculate_grammar_accuracy(text):
 
 st.title("Examination Checker")
 
-with open(sample_file_path, "rb") as file:
-    btn = st.download_button(
-        label="Download Sample Excel File",
-        data=file,
-        file_name="sample_examination_checker.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        key="download-excel",
-        help="Click to download a sample Excel file."
-    )
+# with open(sample_file_path, "rb") as file:
+#     btn = st.download_button(
+#         label="Download Sample Excel File",
+#         data=file,
+#         file_name="sample_examination_checker.xlsx",
+#         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+#         key="download-excel",
+#         help="Click to download a sample Excel file."
+#     )
 
 uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
 
