@@ -9,12 +9,10 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from collections import Counter
 from textblob import TextBlob
 
-# Download necessary NLTK data
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
-# Create a sample DataFrame for the sample Excel file
 sample_data = {
     "question": [
         "What is the difference between abstraction and encapsulation?",
@@ -34,16 +32,13 @@ sample_data = {
 }
 sample_df = pd.DataFrame(sample_data)
 
-# Save the sample DataFrame to an Excel file
 sample_file_path = 'sample_examination_checker.xlsx'
 sample_df.to_excel(sample_file_path, index=False)
 
-# Function to load the dataset
 @st.cache_data
 def load_data(uploaded_file):
     return pd.read_excel(uploaded_file)
 
-# Function to calculate cosine similarity
 def calculate_cosine_similarity(student_answer, answer_key):
     vectorizer = TfidfVectorizer()
     tfidf_matrix_student = vectorizer.fit_transform([student_answer])
@@ -51,7 +46,6 @@ def calculate_cosine_similarity(student_answer, answer_key):
     cosine_sim = cosine_similarity(tfidf_matrix_student, tfidf_matrix_answer)
     return cosine_sim[0][0] * 100
 
-# Function to extract keywords
 def extract_keywords(answer, max_marks):
     vectorizer = TfidfVectorizer(stop_words='english')
     top_n_mapping = {1: 5, 2: 10, 3: 20, 4: 30, 5: 50}
@@ -64,7 +58,6 @@ def extract_keywords(answer, max_marks):
     top_keywords = min(len(sorted_words), top_keywords)
     return [word for word, _ in sorted_words[:top_keywords]]
 
-# Function to calculate grammar accuracy using TextBlob
 def calculate_grammar_accuracy(text):
     blob = TextBlob(text)
     corrected_text = str(blob.correct())
@@ -73,10 +66,8 @@ def calculate_grammar_accuracy(text):
     accuracy = (total_words - num_errors) / total_words * 100
     return accuracy
 
-# Streamlit UI
 st.title("Examination Checker")
 
-# Provide a download link for the sample Excel file
 with open(sample_file_path, "rb") as file:
     btn = st.download_button(
         label="Download Sample Excel File",
@@ -87,13 +78,11 @@ with open(sample_file_path, "rb") as file:
         help="Click to download a sample Excel file."
     )
 
-# File upload
 uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
 
 if uploaded_file is not None:
     data = load_data(uploaded_file)
 
-    # Select a question from the dataset
     question_index = st.selectbox("Select a question to answer:", data.index)
     question = data.loc[question_index, 'question']
     answer_key = data.loc[question_index, 'answer key']
@@ -101,28 +90,22 @@ if uploaded_file is not None:
 
     st.write(f"### Question: {question}")
 
-    # Input the answer from the user
     student_answer = st.text_area("Enter your answer here:")
 
     if st.button("Evaluate Answer"):
         if student_answer:
-            # Calculate cosine similarity
             cosine_sim = calculate_cosine_similarity(student_answer, answer_key)
             
-            # Extract keywords from student answer
             sa_keywords = extract_keywords(student_answer, max_marks)
             ak_keywords = extract_keywords(answer_key, max_marks)
             
-            # Calculate grammar accuracy
             grammar_accuracy = calculate_grammar_accuracy(student_answer)
-            
-            # Display evaluation results
+
             st.write(f"**Cosine Similarity:** {cosine_sim:.2f}%")
             st.write(f"**Grammar Accuracy:** {grammar_accuracy:.2f}%")
             st.write("**Keywords in your answer:**", sa_keywords)
             st.write("**Keywords in the answer key:**", ak_keywords)
             
-            # Compute final marks (custom logic can be added here)
             final_marks = (cosine_sim * 0.9 + grammar_accuracy * 0.1) * max_marks / 100
             st.write(f"**Final Marks:** {final_marks:.2f} out of {max_marks}")
         else:
