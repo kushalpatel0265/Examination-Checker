@@ -13,27 +13,27 @@ from textblob import TextBlob
 # nltk.download('stopwords')
 # nltk.download('wordnet')
 
-# sample_data = {
-#     "question": [
-#         "What is the difference between abstraction and encapsulation?",
-#         "Explain the concept of polymorphism in object-oriented programming.",
-#         "Compare and contrast TCP and UDP protocols.",
-#         "What is a stack data structure, and how is it different from a queue?",
-#         "Describe the role of a compiler in the software development process."
-#     ],
-#     "answer key": [
-#         "In a comprehensive view, abstraction and encapsulation play pivotal roles in achieving robust and maintainable software architecture. Abstraction not only simplifies the design process by allowing developers to focus on essential aspects but also supports the creation of abstract data types and polymorphism. It promotes a high level of conceptualization by defining common interfaces that guide the interactions between different components. Encapsulation, as a complementary concept, goes beyond information hiding. It fosters the concept of data protection by providing access modifiers that restrict direct access to internal state, allowing controlled manipulation through well-defined methods. This encapsulation of implementation details enhances code security, reduces the risk of unintended side effects, and facilitates future modifications without affecting external code. Together, abstraction and encapsulation form the foundation of object-oriented design principles, fostering code organization, reusability, and adaptability. These principles contribute to the development of scalable and maintainable software systems, making them essential considerations in the field of software engineering.", 
-#         "Polymorphism encompasses compile-time polymorphism and runtime polymorphism. Compile-time polymorphism, achieved through method overloading, is resolved at compile time. The compiler determines the correct method to be called based on the method signature and parameter types. Runtime polymorphism, facilitated by method overriding, occurs at runtime. The appropriate method implementation is selected dynamically based on the actual type of the object, promoting flexibility and extensibility in code design. Overall, polymorphism is a powerful concept in OOP, supporting the creation of robust and scalable software systems by providing a unified and adaptable interface for objects of diverse types.",
-#         "In a more comprehensive analysis, it's essential to delve deeper into the use cases, advantages, and disadvantages of TCP and UDP.TCP is well-suited for applications that require a high level of reliability, such as file transfers, email communication, and web browsing. The reliable, ordered delivery of data comes at the cost of increased overhead and latency due to the connection setup and error-checking mechanisms. TCP's flow control ensures that the sender does not overwhelm the receiver with data, making it suitable for scenarios where network conditions can vary. UDP, being connectionless and lacking some of the reliability features of TCP, is favored in situations where speed and low latency are crucial. Real-time applications like online gaming, live streaming, and VoIP benefit from UDP's lightweight nature, as occasional data loss is tolerable, and rapid transmission is prioritized. However, UDP is not suitable for applications where every piece of data must be delivered reliably and in order. In summary, the choice between TCP and UDP depends on the specific requirements of the application. TCP is chosen for applications that prioritize accuracy and completeness, while UDP is preferred for applications that prioritize speed and low latency.",
-#         "The stack and queue, both integral data structures in computer science, embody contrasting organizational principles that dictate their functionality. A stack, operating on the Last In, First Out (LIFO) principle, manages elements in a manner where the latest addition is the first to be accessed or removed. This streamlined structure supports operations like push (to add an element) and pop (to remove the top element), and its single entry point streamlines the management of recently added items.",
-#         "In the intricate tapestry of software development, a compiler assumes a multifaceted role that transcends mere code translation. It serves as a linguistic intermediary, translating high-level programming code, authored by developers in languages like Java or C++, into machine-readable binary code. This process, known as compilation, unfolds in multiple stages, including lexical analysis, syntax analysis, optimization, and code generation."
-#     ],
-#     "max marks": [5, 5, 5, 5, 5]
-# }
-# sample_df = pd.DataFrame(sample_data)
+sample_data = {
+    "question": [
+        "What is the difference between abstraction and encapsulation?",
+        "Explain the concept of polymorphism in object-oriented programming.",
+        "Compare and contrast TCP and UDP protocols.",
+        "What is a stack data structure, and how is it different from a queue?",
+        "Describe the role of a compiler in the software development process."
+    ],
+    "answer key": [
+        "In a comprehensive view, abstraction and encapsulation play pivotal roles in achieving robust and maintainable software architecture. Abstraction not only simplifies the design process by allowing developers to focus on essential aspects but also supports the creation of abstract data types and polymorphism. It promotes a high level of conceptualization by defining common interfaces that guide the interactions between different components. Encapsulation, as a complementary concept, goes beyond information hiding. It fosters the concept of data protection by providing access modifiers that restrict direct access to internal state, allowing controlled manipulation through well-defined methods. This encapsulation of implementation details enhances code security, reduces the risk of unintended side effects, and facilitates future modifications without affecting external code. Together, abstraction and encapsulation form the foundation of object-oriented design principles, fostering code organization, reusability, and adaptability. These principles contribute to the development of scalable and maintainable software systems, making them essential considerations in the field of software engineering.", 
+        "Polymorphism encompasses compile-time polymorphism and runtime polymorphism. Compile-time polymorphism, achieved through method overloading, is resolved at compile time. The compiler determines the correct method to be called based on the method signature and parameter types. Runtime polymorphism, facilitated by method overriding, occurs at runtime. The appropriate method implementation is selected dynamically based on the actual type of the object, promoting flexibility and extensibility in code design. Overall, polymorphism is a powerful concept in OOP, supporting the creation of robust and scalable software systems by providing a unified and adaptable interface for objects of diverse types.",
+        "In a more comprehensive analysis, it's essential to delve deeper into the use cases, advantages, and disadvantages of TCP and UDP.TCP is well-suited for applications that require a high level of reliability, such as file transfers, email communication, and web browsing. The reliable, ordered delivery of data comes at the cost of increased overhead and latency due to the connection setup and error-checking mechanisms. TCP's flow control ensures that the sender does not overwhelm the receiver with data, making it suitable for scenarios where network conditions can vary. UDP, being connectionless and lacking some of the reliability features of TCP, is favored in situations where speed and low latency are crucial. Real-time applications like online gaming, live streaming, and VoIP benefit from UDP's lightweight nature, as occasional data loss is tolerable, and rapid transmission is prioritized. However, UDP is not suitable for applications where every piece of data must be delivered reliably and in order. In summary, the choice between TCP and UDP depends on the specific requirements of the application. TCP is chosen for applications that prioritize accuracy and completeness, while UDP is preferred for applications that prioritize speed and low latency.",
+        "The stack and queue, both integral data structures in computer science, embody contrasting organizational principles that dictate their functionality. A stack, operating on the Last In, First Out (LIFO) principle, manages elements in a manner where the latest addition is the first to be accessed or removed. This streamlined structure supports operations like push (to add an element) and pop (to remove the top element), and its single entry point streamlines the management of recently added items.",
+        "In the intricate tapestry of software development, a compiler assumes a multifaceted role that transcends mere code translation. It serves as a linguistic intermediary, translating high-level programming code, authored by developers in languages like Java or C++, into machine-readable binary code. This process, known as compilation, unfolds in multiple stages, including lexical analysis, syntax analysis, optimization, and code generation."
+    ],
+    "max marks": [5, 5, 5, 5, 5]
+}
+sample_df = pd.DataFrame(sample_data)
 
-# sample_file_path = 'sample_examination_checker.xlsx'
-# sample_df.to_excel(sample_file_path, index=False)
+sample_file_path = 'sample_examination_checker.xlsx'
+sample_df.to_excel(sample_file_path, index=False)
 
 @st.cache_data
 def load_data(uploaded_file):
@@ -68,15 +68,15 @@ def calculate_grammar_accuracy(text):
 
 st.title("Examination Checker")
 
-# with open(sample_file_path, "rb") as file:
-#     btn = st.download_button(
-#         label="Download Sample Excel File",
-#         data=file,
-#         file_name="sample_examination_checker.xlsx",
-#         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-#         key="download-excel",
-#         help="Click to download a sample Excel file."
-#     )
+with open(sample_file_path, "rb") as file:
+    btn = st.download_button(
+        label="Download Sample Excel File",
+        data=file,
+        file_name="sample_examination_checker.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        key="download-excel",
+        help="Click to download a sample Excel file."
+    )
 
 uploaded_file = st.file_uploader("Upload your Excel file", type=["xlsx"])
 
