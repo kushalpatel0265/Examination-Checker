@@ -1,7 +1,6 @@
-streamlit
-PyPDF2
-sentence-transformers
-transformers
+treamlit
+pandas
+scikit-learn
 nltk
-llama-index-llms-groq
-llama-index
+textblob
+openpyxl
